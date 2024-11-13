@@ -1,42 +1,49 @@
 package task4_1;
 
+import java.util.Scanner;
+
 public class PalindromeChecker {
 
     public static void main(String[] args) {
+        // This is viet's comment
+        Scanner scan = new Scanner(System.in);  // Changed variable 'scanner' to 'scan'
+        System.out.println("Testing if the input is Palidrome, please give me something: ");
+        String inputText = scan.nextLine();  // Changed variable 'input' to 'inputText'
         
-        Scanner scanner = new Scanner(System.in);
-        String input = scanner.nextLine();
-        
-        String transformed = transformInput(input);
-        
-        boolean isPalindrome = checkPalindrome(transformed);
+        String modifiedText = modifyInput(inputText);  // Changed variable 'modified' to 'modifiedText'
+    
+        boolean isPalindrome = checkPalindrome(modifiedText);
         if (isPalindrome) {
             System.out.println("The transformed input is a palindrome.");
         } else {
             System.out.println("The transformed input is not a palindrome.");
         }
+
+        scan.close();  // Changed variable 'scanner' to 'scan'
     }
 
-    public static String transformInput(String input) {
-        input = input.toLowerCase();
-        input = input.replace(",", "");
-        input = input.replace("!", "");
-        return input;
+    public static String modifyInput(String inputText) {  
+        // Taking out the dot and !
+        inputText = inputText.toLowerCase();  
+        inputText = inputText.replace(",", "");
+        inputText = inputText.replace("!", "");
+        return inputText;
     }
 
-    public static boolean checkPalindrome(String input) {
-        String reversed = reverseString(input);
-        if (input.equals(reversed)) {
+    public static boolean checkPalindrome(String inputText) {  
+        // Returns true if the reversed string equals the input
+        String reversed = reverseString(inputText);  
+        if (inputText.equals(reversed)) { 
             return true;
         } else {
             return false;
         }
     }
 
-    public static String reverseString(String input) {
+    public static String reverseString(String inputText) { 
         StringBuilder reversed = new StringBuilder();
-        for (int i = input.length() - 1; i >= 0; i--) {
-            reversed.append(input.charAt(i));
+        for (int i = inputText.length() - 1; i >= 0; i--) {  
+            reversed.append(inputText.charAt(i));  
         }
         return reversed.toString();
     }
